@@ -60,3 +60,15 @@ Object.freeze(myPizza);
 
 // https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
 
+//Shallow Copy (ES6)
+let assignP = Object.assign({}, pizza);
+console.log(assignP); //{name: "Peri Peri", Topping: "Prawn"}
+
+//Spread Syntax
+let restP = { ...pizza };
+console.log(restP); //{name: "Peri Peri", Topping: "Prawn"}
+
+let clone = structuredClone(pizza);
+console.log('Structure clone: ', clone); //Structure clone:
+// Structure clone: {name: "Peri Peri", Topping: "Prawn"}
+
