@@ -16,6 +16,24 @@
       To check if an object is frozen, we can use the
       <code class="highlight">Object.isFrozen()</code> method.
     </li>
+    <li>
+      <h4>How to thaw/defrost a frozen object in Javascript?</h4>
+      <ol>
+        <li>
+          Nothing can be added to or removed from the properties set of a frozen
+          object. Any attempt to do so will fail, either silently or by throwing
+          a TypeError exception (most commonly, but not exclusively, when in
+          strict mode).
+        </li>
+        <li>
+          Values cannot be changed for data properties. Accessor properties
+          (getters and setters) work the same (and still give the illusion that
+          you are changing the value). Note that values that are objects can
+          still be modified, unless they are also frozen.
+        </li>
+        <li>So, the only way this could be done is, by cloning the object.</li>
+      </ol>
+    </li>
   </ul>
 
   <p>

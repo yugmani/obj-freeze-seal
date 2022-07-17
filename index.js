@@ -30,3 +30,33 @@ const obj = {
 
 console.log(Object.isFrozen(obj)); //false
 console.log(Object.isFrozen(userData)); //true
+
+//How to thaw/defrost a frozen object in Javascript?
+// ***************************************************
+
+//the only way this could be done is, by cloning the object
+const pizza = {
+  name: 'Peri Peri',
+  Topping: 'Prawn',
+};
+
+Object.freeze(pizza);
+// pizza.name = "Hawaiian"; //Cannot assign to read only property 'name' of object '#<Object>'
+
+//now cloning the 'pizza'
+const myPizza = JSON.parse(JSON.stringify(pizza));
+myPizza.name = 'Hawaiian'; //modify a property
+myPizza.price = 33;
+
+delete myPizza.Topping;
+console.log(myPizza); //{name: "Hawaiian", price: 33}
+
+// Note 1: In strict mode, it will NOT fail silently and throw an Error instead
+('use strict');
+Object.freeze(myPizza);
+// myPizza.name = 'Pepperoni'; //Error: Cannot assign to read only property 'name' of object '#<Object>'
+
+// Note 2: If your object has methods, then JSON.stringify approach will NOT get them. You can read more about properly cloning the objects in these three questions.
+
+// https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
+
