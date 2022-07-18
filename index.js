@@ -133,3 +133,10 @@ console.log(userObj);
   // there is no more property 'address'.
 }
 */
+
+//To check if an object is prevented from extensions, we can use the Object.isExtensible() method.
+
+console.log(Object.isExtensible(userObj)); //false
+
+const obj2 = { x: 17 };
+console.log(Object.isExtensible(obj2)); //true
