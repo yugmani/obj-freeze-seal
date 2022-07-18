@@ -98,3 +98,14 @@ console.log(myUser);
     address: "4th street, Long Beach, Los Angeles"
 }
 */
+
+//To check if an object is sealed, we can use the Object.isSealed() method.
+// ****************************************************
+
+const isSealed = Object.isSealed(myUser);
+console.log(isSealed); //true
+
+const myObj = { x: 23 };
+console.log(Object.isSealed(myObj)); //false
+
+
