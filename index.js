@@ -72,3 +72,29 @@ let clone = structuredClone(pizza);
 console.log('Structure clone: ', clone); //Structure clone:
 // Structure clone: {name: "Peri Peri", Topping: "Prawn"}
 
+// The Object.seal() Method
+// *****************************
+
+const myUser = {
+  uid: 'Bm7w5e8sUpQx6kF5x',
+  name: 'Andrew Torres',
+  email: 'andrew.torres@seal.com',
+  address: '4th street, Long Beach, Los Angeles',
+};
+
+//seal the object 'myUser'
+Object.seal(myUser);
+// myUser.age = 33; //Cannot add property age, object is not extensible
+
+myUser.uid = 'xxxxxxx';
+// delete myUser.email; //Error: Cannot delete property 'email' of #<Object>
+
+console.log(myUser);
+/*
+{
+    uid: "xxxxxxx",   // ** Updated uid **
+    name: "Andrew Torres", 
+    email: "andrew.torres@seal.com", 
+    address: "4th street, Long Beach, Los Angeles"
+}
+*/
