@@ -79,7 +79,7 @@ const myUser = {
   uid: 'Bm7w5e8sUpQx6kF5x',
   name: 'Andrew Torres',
   email: 'andrew.torres@seal.com',
-  address: '4th street, Long Beach, Los Angeles',
+  address: '4th street, Long Beach, California',
 };
 
 //seal the object 'myUser'
@@ -95,7 +95,7 @@ console.log(myUser);
     uid: "xxxxxxx",   // ** Updated uid **
     name: "Andrew Torres", 
     email: "andrew.torres@seal.com", 
-    address: "4th street, Long Beach, Los Angeles"
+    address: "4th street, Long Beach, California"
 }
 */
 
@@ -108,4 +108,28 @@ console.log(isSealed); //true
 const myObj = { x: 23 };
 console.log(Object.isSealed(myObj)); //false
 
+// The Object.preventExtensions() method
+// *****************************************
 
+const userObj = {
+  uid: 'Xm7w5e8sUpQx6kF5V',
+  name: 'Jonathan Parker',
+  email: 'jonathan.parker@rose.com',
+  address: '1000 Southpoint Ave, Los Angeles, California',
+};
+
+// using Object.preventExtensions(Obj) method
+Object.preventExtensions(userObj);
+// userObj.age = 77; //Error: Cannot add property age, object is not extensible
+userObj.uid = 'ooooooooooooooo';
+delete userObj.address;
+
+console.log(userObj);
+/*
+{
+  uid: "ooooooooooooooo",   // ** updated uid **
+  name: "Jonathan Parker", 
+  email: "jonathan.parker@rose.com"
+  // there is no more property 'address'.
+}
+*/
