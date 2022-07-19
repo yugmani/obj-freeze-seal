@@ -155,12 +155,12 @@ const user = {
 
 Object.freeze(user);
 // user.name = "Boris Baker"; //Cannot assign to read only property 'name' of object '#<Object>'
-user.address.country = "Nepal";
-user.address.state = "Gandaki";
+user.address.country = 'Nepal';
+user.address.state = 'Gandaki';
 
 delete user.address.city;
 console.log(user);
-{name: "Steve Roger", address: {…}}
+
 /*
 {
   name: "Steve Roger",
@@ -169,5 +169,40 @@ console.log(user);
     state: "Gandaki" //added state
     //city is deleted
   }
+}
+*/
+
+const userMe = {
+  name: 'Steve Roger',
+  address: {
+    city: 'New York city',
+    country: 'USA',
+  },
+};
+
+//To apply these methods in nested objects as well
+function freezeNestedObjects(obj) {
+  Object.freeze(obj); //same thing for seal() and preventExtensions();
+
+  Object.values(obj).forEach((ob) => {
+    if (typeof ob === 'object') freezeNestedObjects(ob);
+  });
+}
+
+freezeNestedObjects(userMe);
+// userMe.address.country = 'Canada'; //Error: Cannot assign to read only property 'country' of object '#<Object>'
+
+// userMe.address.state = 'Ontario'; // Error: Cannot add property state, object is not extensible
+
+// userMe.address.city = 'Toronto'; //Error: Cannot assign to read only property 'city' of object
+
+// delete userMe.address.city;
+// Error: Cannot delete property 'city' of #<Object>
+
+console.log(userMe.address);
+/* 
+{
+  city: "New York city", 
+  country: "USA"
 }
 */
