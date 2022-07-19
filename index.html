@@ -61,6 +61,27 @@
       To check if an object is prevented from extensions, we can use the
       <code class="highlight">Object.isExtensible()</code> method.
     </li>
+  </ul>
+  <h3>Using strict mode</h3>
+  <ul>
+    <li>
+      When we use any three of the above methods on an object and later try to
+      mutate it, it doesn’t work, but we also don’t get any console errors.
+    </li>
+    <li>When we use strict mode, it throws an error in such cases.</li>
+  </ul>
+  <h3>Working with nested objects</h3>
+  <ul>
+    <li>
+      The <code class="highlight">freeze()</code>,
+      <code class="highlight">seal()</code>, and
+      <code class="highlight">preventExtensions()</code> methods apply only to
+      the first level of properties.
+    </li>
+    <li>
+      If any nested objects are present in an object, then modifying the nested
+      objects works as before.
+    </li>
     <li></li>
   </ul>
   <p>

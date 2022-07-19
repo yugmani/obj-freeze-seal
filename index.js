@@ -140,3 +140,34 @@ console.log(Object.isExtensible(userObj)); //false
 
 const obj2 = { x: 17 };
 console.log(Object.isExtensible(obj2)); //true
+
+//Working with nested objects
+// *******************************************
+
+//nested object
+const user = {
+  name: 'Steve Roger',
+  address: {
+    city: 'New York city',
+    country: 'USA',
+  },
+};
+
+Object.freeze(user);
+// user.name = "Boris Baker"; //Cannot assign to read only property 'name' of object '#<Object>'
+user.address.country = "Nepal";
+user.address.state = "Gandaki";
+
+delete user.address.city;
+console.log(user);
+{name: "Steve Roger", address: {…}}
+/*
+{
+  name: "Steve Roger",
+  address: {
+    country: "Nepal"  //updated country
+    state: "Gandaki" //added state
+    //city is deleted
+  }
+}
+*/
